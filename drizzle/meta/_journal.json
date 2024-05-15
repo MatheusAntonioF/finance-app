@@ -15,6 +15,13 @@
       "when": 1715721301727,
       "tag": "0001_glamorous_starfox",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1715812696559,
+      "tag": "0002_fast_azazel",
+      "breakpoints": true
     }
   ]
 }
