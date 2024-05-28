@@ -1,0 +1,11 @@
+Type,Product,Started Date,Completed Date,Description,Amount,Fee,Currency,State,Balance
+Purchase,Widget A,2024-01-01,2024-01-05,Initial purchase of Widget A,100.00,2.00,USD,Completed,98.00
+Refund,Widget B,2024-01-10,2024-01-12,Refund for Widget B,50.00,1.00,USD,Completed,147.00
+Transfer,Service C,2024-01-15,2024-01-16,Transfer for Service C,200.00,3.00,USD,Completed,344.00
+Purchase,Widget D,2024-02-01,2024-02-04,Initial purchase of Widget D,150.00,2.50,USD,Completed,491.50
+Refund,Service E,2024-02-10,2024-02-11,Refund for Service E,75.00,1.50,USD,Completed,565.00
+Transfer,Subscription F,2024-02-20,2024-02-21,Transfer for Subscription F,300.00,4.00,USD,Completed,861.00
+Purchase,Widget G,2024-03-01,2024-03-05,Initial purchase of Widget G,120.00,2.20,USD,Completed,978.80
+Refund,Widget H,2024-03-10,2024-03-12,Refund for Widget H,60.00,1.20,USD,Completed,1037.60
+Transfer,Service I,2024-03-20,2024-03-21,Transfer for Service I,250.00,3.50,USD,Completed,1284.10
+Purchase,Subscription J,2024-04-01,2024-04-05,Initial purchase of Subscription J,180.00,2.80,USD,Completed,1461.30
