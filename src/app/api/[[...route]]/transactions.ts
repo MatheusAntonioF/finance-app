@@ -169,7 +169,7 @@ const app = new Hono()
 
             const values = c.req.valid('json');
 
-            if (auth?.userId) {
+            if (!auth?.userId) {
                 return c.json({ error: 'Unauthorized' }, 401);
             }
 
