@@ -1,4 +1,10 @@
-import { AreaChart, BarChart3, LineChart, Loader2, Search } from 'lucide-react';
+import {
+    AreaChart,
+    BarChart3,
+    FileSearch,
+    LineChart,
+    Loader2,
+} from 'lucide-react';
 
 import {
     Select,
@@ -64,7 +70,7 @@ export const Chart = ({ data = [] }: Props) => {
             <CardContent className="">
                 {data.length === 0 ? (
                     <div className="flex flex-col gap-y-4 items-center justify-center h-[350px] w-full">
-                        <Search className="size-6 text-muted-foreground" />
+                        <FileSearch className="size-6 text-muted-foreground" />
                         <p className="text-muted-foreground text-sm">
                             No data for this period
                         </p>
