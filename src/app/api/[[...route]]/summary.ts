@@ -164,7 +164,7 @@ export const summaryRoutes = new Hono().get(
         const days = fillMissingDays(activeDays, startDate, endDate);
 
         return c.json({
-            date: {
+            data: {
                 remainingAmount: currentPeriod.remaining,
                 remainingChange,
                 incomeAmount: currentPeriod.income,
