@@ -50,7 +50,7 @@ export const DataGrid = () => {
                 value={data?.incomeAmount}
                 percentageChange={data?.incomeChange}
                 icon={TrendingUp}
-                variant="default"
+                variant="success"
                 dateRange={dateRangeLabel}
             />
             <DataCard
@@ -58,7 +58,7 @@ export const DataGrid = () => {
                 value={data?.expensesAmount}
                 percentageChange={data?.expensesChange}
                 icon={TrendingDown}
-                variant="default"
+                variant="danger"
                 dateRange={dateRangeLabel}
             />
         </div>
