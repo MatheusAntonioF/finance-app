@@ -10,11 +10,11 @@ import { client } from '@/lib/hono';
 import { Actions } from './actions';
 
 export type ResponseType = InferResponseType<
-    typeof client.api.categories.$get,
+    typeof client.api.accounts.$get,
     200
 >['data'][0];
 
-export const columns: ColumnDef<ResponseType>[] = [
+export const accountColumns: ColumnDef<ResponseType>[] = [
     {
         id: 'select',
         header: ({ table }) => (
@@ -54,6 +54,7 @@ export const columns: ColumnDef<ResponseType>[] = [
                 </Button>
             );
         },
+        cell: ({ row }) => <span className="px-4">{row.original.name}</span>,
     },
     {
         id: 'actions',

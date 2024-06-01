@@ -1,21 +1,25 @@
 'use client';
 
+import { useState } from 'react';
 import { Loader2, Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useNewTransaction } from '@/features/transactions/hooks/use-new-transaction';
 import { DataTable } from '@/components/data-table';
 import { Skeleton } from '@/components/ui/skeleton';
-import { columns } from './columns';
+import { Button } from '@/components/ui/button';
+
+import { useNewTransaction } from '@/features/transactions/hooks/use-new-transaction';
 import { useGetTransactions } from '@/features/transactions/api/use-get-transactions';
 import { useBulkDeleteTransactions } from '@/features/transactions/api/use-bulk-delete-transactions';
-import { useState } from 'react';
-import { UploadButton } from './upload-button';
-import { ImportCard } from './import-card';
-import { transactions as transactionSchema } from '@/db/schema';
 import { useSelectAccount } from '@/features/accounts/hooks/use-select-account';
-import { toast } from 'sonner';
 import { useBulkCreateTransactions } from '@/features/transactions/api/use-bulk-create-transaction';
+
+import { transactions as transactionSchema } from '@/db/schema';
+
+import { UploadButton } from './_components/upload-button';
+import { transactionsColumns } from './_components/columns';
+import { ImportCard } from './_components/import-card';
 
 enum VARIANTS {
     LIST = 'LIST',
@@ -126,7 +130,7 @@ const TransactionsPage = () => {
                 </CardHeader>
                 <CardContent>
                     <DataTable
-                        columns={columns}
+                        columns={transactionsColumns}
                         data={transactions}
                         filterKey="payee"
                         disabled={isDisabled}
@@ -142,3 +146,21 @@ const TransactionsPage = () => {
 };
 
 export default TransactionsPage;
+
+export const TransactionsPageSkeleton = () => {
+    return (
+        <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
+            <Card className="border-none drop-shadow-sm">
+                <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg:justify-between">
+                    <Skeleton className="text-xl line-clamp-1" />
+                    <div className="flex flex-col lg:flex-row gap-y-2 items-center gap-x-2">
+                        <Skeleton className="w-full lg:w-auto" />
+                    </div>
+                </CardHeader>
+                <CardContent>
+                    <Skeleton className="flex items-center py-4" />
+                </CardContent>
+            </Card>
+        </div>
+    );
+};
