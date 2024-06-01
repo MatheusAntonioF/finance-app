@@ -54,9 +54,14 @@ export const columns: ColumnDef<ResponseType>[] = [
                 </Button>
             );
         },
+        cell: ({ row }) => <span className="px-4">{row.original.name}</span>,
     },
     {
         id: 'actions',
-        cell: ({ row }) => <Actions id={row.original.id} />,
+        cell: ({ row }) => (
+            <div className="w-full flex justify-end">
+                <Actions id={row.original.id} />
+            </div>
+        ),
     },
 ];
