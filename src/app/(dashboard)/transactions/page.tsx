@@ -20,6 +20,7 @@ import { transactions as transactionSchema } from '@/db/schema';
 import { UploadButton } from './_components/upload-button';
 import { transactionsColumns } from './_components/columns';
 import { ImportCard } from './_components/import-card';
+import { TransactionsPageSkeleton } from './_components/skeleton';
 
 enum VARIANTS {
     LIST = 'LIST',
@@ -80,20 +81,7 @@ const TransactionsPage = () => {
     };
 
     if (transactionsQuery.isLoading) {
-        return (
-            <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
-                <Card className="border-none drop-shadow-sm">
-                    <CardHeader>
-                        <Skeleton className="h-8 w-48" />
-                        <CardContent>
-                            <div className="h-[500px] w-full flex items-center justify-center">
-                                <Loader2 className="size-6 text-slate-300 animate-spin" />
-                            </div>
-                        </CardContent>
-                    </CardHeader>
-                </Card>
-            </div>
-        );
+        return <TransactionsPageSkeleton />;
     }
 
     if (variant === VARIANTS.IMPORT) {
@@ -146,21 +134,3 @@ const TransactionsPage = () => {
 };
 
 export default TransactionsPage;
-
-export const TransactionsPageSkeleton = () => {
-    return (
-        <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
-            <Card className="border-none drop-shadow-sm">
-                <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg:justify-between">
-                    <Skeleton className="text-xl line-clamp-1" />
-                    <div className="flex flex-col lg:flex-row gap-y-2 items-center gap-x-2">
-                        <Skeleton className="w-full lg:w-auto" />
-                    </div>
-                </CardHeader>
-                <CardContent>
-                    <Skeleton className="flex items-center py-4" />
-                </CardContent>
-            </Card>
-        </div>
-    );
-};
