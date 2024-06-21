@@ -43,7 +43,7 @@ type BoxVariants = VariantProps<typeof boxVariant>;
 type IconVariants = VariantProps<typeof iconVariant>;
 
 interface DataCardProps extends BoxVariants, IconVariants {
-    icon: any; // TODO: refactor later
+    icon: any;
     title: string;
     value?: number;
     dateRange: string;

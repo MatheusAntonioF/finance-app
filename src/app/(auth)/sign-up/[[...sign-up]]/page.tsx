@@ -23,7 +23,7 @@ export default function Page() {
                     </ClerkLoading>
                 </div>
             </div>
-            <div className="h-full bg-blue-600 hidden lg:flex items-center justify-center">
+            <div className="h-full from-emerald-600 to-emerald-700 hidden lg:flex items-center justify-center">
                 <Image src="logo.svg" height={100} width={100} alt="Logo" />
             </div>
         </div>
