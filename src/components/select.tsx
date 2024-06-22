@@ -21,6 +21,7 @@ export const Select = ({
     options = [],
     placeholder,
 }: Props) => {
+    console.log('🚀 ~ options:', options);
     const onSelect = (
         option: SingleValue<{ label: string; value: string }>
     ) => {
@@ -38,10 +39,10 @@ export const Select = ({
             styles={{
                 control: base => ({
                     ...base,
-                    borderColor: '#e2e8f0',
-                    ':hover': {
-                        borderColor: '#e2e8f0',
-                    },
+                    // borderColor: '#e2e8f0',
+                    // ':hover': {
+                    //     borderColor: '#e2e8f0',
+                    // },
                 }),
             }}
             value={formattedValue}

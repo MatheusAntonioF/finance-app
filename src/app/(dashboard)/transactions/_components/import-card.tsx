@@ -5,8 +5,8 @@ import { ImportTable } from './import-table';
 import { convertAmountToMiliunits } from '@/lib/utils';
 import { format, parse } from 'date-fns';
 
-const dateFormat = 'yyyy-MM-dd';
 const outputFormat = 'yyyy-MM-dd';
+const dateFormat = 'dd/MM/yyyy';
 
 const requiredOptions = ['amount', 'date', 'payee'];
 
@@ -88,20 +88,32 @@ export const ImportCard = ({ data, onCancel, onSubmit }: Props) => {
             }, {});
         });
 
+        const parseAmount = (amount: string) => {
+            const parsedAmount = amount.split('R$')[1];
+
+            return convertAmountToMiliunits(parseFloat(parsedAmount.trim()));
+        };
+
+        const parseDate = (date: string) => {
+            const parsedDate = date;
+
+            const parsed = parse(parsedDate, dateFormat, new Date());
+
+            return format(parsed, outputFormat);
+        };
+
         const formattedData = arrayOfData.map(item => ({
             ...item,
-            amount: convertAmountToMiliunits(parseFloat(item.amount)),
-            date: format(
-                parse(item.date, dateFormat, new Date()),
-                outputFormat
-            ),
+            amount: parseAmount(item.amount),
+            date: parseDate(item.date),
         }));
+        console.log('🚀 ~ formattedData:', formattedData);
 
         onSubmit(formattedData);
     };
 
     return (
-        <div>
+        <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
             <Card className="border-none drop-shadow-sm">
                 <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg:justify-between">
                     <CardTitle className="text-xl line-clamp-1">

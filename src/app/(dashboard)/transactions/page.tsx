@@ -49,6 +49,7 @@ const TransactionsPage = () => {
 
     const newTransaction = useNewTransaction();
     const createTransactions = useBulkCreateTransactions();
+
     const deleteTransactions = useBulkDeleteTransactions();
     const transactionsQuery = useGetTransactions();
     const transactions = transactionsQuery.data || [];
@@ -78,9 +79,11 @@ const TransactionsPage = () => {
                 },
             }
         );
+
+        toast('Importing transactions');
     };
 
-    if (transactionsQuery.isLoading) {
+    if (transactionsQuery.isLoading || createTransactions.isPending) {
         return <TransactionsPageSkeleton />;
     }
 

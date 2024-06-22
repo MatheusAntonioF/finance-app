@@ -4,10 +4,11 @@ import qs from 'query-string';
 import { DateRange } from 'react-day-picker';
 import { ChevronDown } from 'lucide-react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { format } from 'date-fns';
+import { useState } from 'react';
 
-import { useGetSummary } from '@/features/summary/api/use-get-summary';
+import { formatDateRange, fromStartOfTheMonthToToday } from '@/lib/utils';
 
-import { cn, formatDateRange } from '@/lib/utils';
 import { Button } from './ui/button';
 import { Calendar } from './ui/calendar';
 import {
@@ -16,8 +17,6 @@ import {
     PopoverTrigger,
     PopoverClose,
 } from './ui/popover';
-import { format, subDays } from 'date-fns';
-import { useState } from 'react';
 
 export const DateFilter = () => {
     const router = useRouter();
@@ -28,8 +27,7 @@ export const DateFilter = () => {
     const from = params.get('from') || '';
     const to = params.get('to') || '';
 
-    const defaultTo = new Date();
-    const defaultFrom = subDays(defaultTo, 30);
+    const { start: defaultFrom, end: defaultTo } = fromStartOfTheMonthToToday();
 
     const paramState = {
         from: from ? new Date(from) : defaultFrom,

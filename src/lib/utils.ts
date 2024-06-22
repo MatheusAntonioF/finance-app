@@ -1,5 +1,11 @@
 import { type ClassValue, clsx } from 'clsx';
-import { eachDayOfInterval, format, isSameDay, subDays } from 'date-fns';
+import {
+    eachDayOfInterval,
+    format,
+    isSameDay,
+    subDays,
+    startOfMonth,
+} from 'date-fns';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -102,4 +108,40 @@ export function formatPercentage(
     }
 
     return result;
+}
+
+type FromStartOfMonthToTodayResponse = {
+    start: Date;
+    end: Date;
+};
+
+export function fromStartOfTheMonthToToday(): FromStartOfMonthToTodayResponse {
+    const today = new Date();
+    const start = startOfMonth(today);
+
+    return {
+        start,
+        end: today,
+    };
+}
+
+type HandleFromAndToParamProps = {
+    from: string | null;
+    to: string | null;
+};
+
+export function handleFromAndToParam({ from, to }: HandleFromAndToParamProps) {
+    let parsedFrom = from;
+    let parsedTo = to;
+
+    const { start, end } = fromStartOfTheMonthToToday();
+
+    if (!from) parsedFrom = format(start, 'yyy-MM-dd');
+
+    if (!to) parsedTo = format(end, 'yyy-MM-dd');
+
+    return {
+        from: parsedFrom || undefined,
+        to: parsedTo || undefined,
+    };
 }

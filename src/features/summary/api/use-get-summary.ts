@@ -1,12 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
+
 import { client } from '@/lib/hono';
-import { convertAmountFromMiliunits } from '@/lib/utils';
+import { convertAmountFromMiliunits, handleFromAndToParam } from '@/lib/utils';
 
 export const useGetSummary = () => {
     const params = useSearchParams();
-    const from = params.get('from') || '';
-    const to = params.get('to') || '';
+    const { from, to } = handleFromAndToParam({
+        from: params.get('from'),
+        to: params.get('to'),
+    });
     const accountId = params.get('accountId') || '';
 
     const query = useQuery({
