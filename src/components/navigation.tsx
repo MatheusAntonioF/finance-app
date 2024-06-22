@@ -1,13 +1,14 @@
 'use client';
 
+import { useState } from 'react';
 import { useMedia } from 'react-use';
+import { Menu } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 
 import { NavButton } from './nav-button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
-import { useState } from 'react';
 import { Button } from './ui/button';
-import { Menu } from 'lucide-react';
+
 const routes = [
     {
         href: '/',
@@ -24,10 +25,6 @@ const routes = [
     {
         href: '/categories',
         label: 'Categories',
-    },
-    {
-        href: '/settings',
-        label: 'Settings',
     },
 ];
 

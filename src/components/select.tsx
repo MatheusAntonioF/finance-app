@@ -21,7 +21,6 @@ export const Select = ({
     options = [],
     placeholder,
 }: Props) => {
-    console.log('🚀 ~ options:', options);
     const onSelect = (
         option: SingleValue<{ label: string; value: string }>
     ) => {
@@ -37,12 +36,27 @@ export const Select = ({
             placeholder={placeholder}
             className="text-sm h-10"
             styles={{
+                singleValue: base => ({
+                    ...base,
+                    color: 'white',
+                }),
                 control: base => ({
                     ...base,
-                    // borderColor: '#e2e8f0',
-                    // ':hover': {
-                    //     borderColor: '#e2e8f0',
-                    // },
+                    backgroundColor: 'bg-popover',
+                    borderColor: 'border-input',
+                    borderRadius: '10px',
+
+                    ':hover': {
+                        backgroundColor: 'inherit',
+                    },
+                }),
+                menuList: base => ({
+                    ...base,
+                    backgroundColor: '#171717',
+                }),
+                option: base => ({
+                    ...base,
+                    backgroundColor: 'rgba(34, 197, 94, 0.5)',
                 }),
             }}
             value={formattedValue}
