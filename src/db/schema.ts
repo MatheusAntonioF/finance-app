@@ -54,6 +54,9 @@ export const transactions = pgTable('transactions', {
     categoryId: text('category_id').references(() => categories.id, {
         onDelete: 'set null',
     }),
+    creditCardId: text('credit_card_id').references(() => creditCards.id, {
+        onDelete: 'set null',
+    }),
 });
 
 export const transactionsRelations = relations(transactions, ({ one }) => ({
@@ -65,8 +68,25 @@ export const transactionsRelations = relations(transactions, ({ one }) => ({
         fields: [transactions.categoryId],
         references: [categories.id],
     }),
+    creditCards: one(creditCards, {
+        fields: [transactions.creditCardId],
+        references: [creditCards.id],
+    }),
 }));
 
 export const insertTransactionSchema = createInsertSchema(transactions, {
     date: z.coerce.date(),
+});
+
+export const creditCards = pgTable('credit-cards', {
+    id: text('id').primaryKey(),
+    name: text('name').notNull(),
+    accountId: text('account_id').notNull(),
+    dueDate: timestamp('date', { mode: 'date' }).notNull(),
+    bestDayToBuy: timestamp('date', { mode: 'date' }).notNull(),
+});
+
+export const insertCreditCardSchema = createInsertSchema(creditCards, {
+    dueDate: z.coerce.date(),
+    bestDayToBuy: z.coerce.date(),
 });

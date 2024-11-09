@@ -22,6 +22,13 @@
       "when": 1715812696559,
       "tag": "0002_fast_azazel",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1717210613525,
+      "tag": "0003_solid_doorman",
+      "breakpoints": true
     }
   ]
 }

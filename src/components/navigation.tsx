@@ -14,17 +14,22 @@ const routes = [
         href: '/',
         label: 'Overview',
     },
-    {
-        href: '/transactions',
-        label: 'Transactions',
-    },
+
     {
         href: '/accounts',
         label: 'Accounts',
     },
     {
+        href: '/credit-cards',
+        label: 'Credit Cards',
+    },
+    {
         href: '/categories',
         label: 'Categories',
+    },
+    {
+        href: '/transactions',
+        label: 'Transactions',
     },
 ];
 

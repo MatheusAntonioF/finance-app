@@ -6,6 +6,7 @@ import { categoriesRoutes } from './categories';
 import { HTTPException } from 'hono/http-exception';
 import { transactionsRoutes } from './transactions';
 import { summaryRoutes } from './summary';
+import { creditCardRoutes } from './credit-cards';
 
 export const runtime = 'edge';
 
@@ -23,7 +24,8 @@ const routes = app
     .route('/summary', summaryRoutes)
     .route('/accounts', accountsRoutes)
     .route('/categories', categoriesRoutes)
-    .route('/transactions', transactionsRoutes);
+    .route('/transactions', transactionsRoutes)
+    .route('/credit-cards', creditCardRoutes);
 
 export const GET = handle(app);
 export const POST = handle(app);
